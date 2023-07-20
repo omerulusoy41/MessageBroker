@@ -11,15 +11,20 @@ consumer = KafkaConsumer(
     topic_name,
     bootstrap_servers=bootstrap_servers,
     group_id='deneme2',  # Change the group_id to a unique name for your application
-    auto_offset_reset='earliest',  # Start consuming from the earliest available message in the topic
-    enable_auto_commit=False      # Disable auto-commit to have more control over message consumption
+    auto_offset_reset='latest',  # Start consuming from the earliest available message in the topic
+    enable_auto_commit=True       # Disable auto-commit to have more control over message consumption
 )
 
 try:
+    
     for message in consumer:
+        i = 1
         message_value = message.value.decode('utf-8')
-        print(f"Received message: {message_value}")
+        print(f"{i}. producer push message: {message_value}")
+        print("-----------------")
         consumer.commit()
+        i += 1
+        
 
 except KeyboardInterrupt:
     # Close the consumer on keyboard interrupt (Ctrl+C)
