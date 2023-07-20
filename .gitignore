@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+kafkaConsumer/nodejs/node_modules
+kafkaConsumer/nodejs/package.json
